@@ -18,11 +18,16 @@ To run the application locally, ensure you have Node.js installed and configured
 
 ## Application Routes
 
-Once the development server is running (usually at http://localhost:5173), you can view the application pages at the following URLs:
+You can view the live application on GitHub Pages at the following URLs:
 
-- **Home View:** [http://localhost:5173/](http://localhost:5173/)
-- **Terms and Conditions:** [http://localhost:5173/terms](http://localhost:5173/terms)
-- **Privacy Policy:** [http://localhost:5173/privacy](http://localhost:5173/privacy)
+- **Home View:** 
+  - [https://amitkumarsingh655.github.io/musicPlayerWebsite/](https://amitkumarsingh655.github.io/musicPlayerWebsite/)
+- **Terms and Conditions:** 
+  - [https://amitkumarsingh655.github.io/musicPlayerWebsite/terms](https://amitkumarsingh655.github.io/musicPlayerWebsite/terms)
+  - [https://amitkumarsingh655.github.io/musicPlayerWebsite/terms-and-conditions](https://amitkumarsingh655.github.io/musicPlayerWebsite/terms-and-conditions)
+- **Privacy Policy:** 
+  - [https://amitkumarsingh655.github.io/musicPlayerWebsite/privacy](https://amitkumarsingh655.github.io/musicPlayerWebsite/privacy)
+  - [https://amitkumarsingh655.github.io/musicPlayerWebsite/policy](https://amitkumarsingh655.github.io/musicPlayerWebsite/policy)
 
 ## Technologies Used
 

@@ -28,13 +28,16 @@ export default function App() {
   };
 
   const renderContent = () => {
-    if (currentPath.includes('/terms')) return <TermsAndConditions />;
-    if (currentPath.includes('/privacy')) return <PrivacyPolicy />;
+    const p = currentPath.toLowerCase();
+    if (p.includes('/terms-and-conditions') || p.includes('/terms')) return <TermsAndConditions />;
+    if (p.includes('/policy') || p.includes('/privacy')) return <PrivacyPolicy />;
     return <Home />;
   };
 
   const isActive = (path) => {
     if (path === '/') return currentPath === BASE_PATH || currentPath === BASE_PATH + '/';
+    if (path === '/terms') return currentPath.includes('/terms') || currentPath.includes('/terms-and-conditions');
+    if (path === '/privacy') return currentPath.includes('/privacy') || currentPath.includes('/policy');
     return currentPath.includes(path);
   };
 
