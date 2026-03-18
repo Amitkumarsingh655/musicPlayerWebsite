@@ -31,6 +31,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Generate 404 fallback for Single Page App routing
+        run: cp ./dist/index.html ./dist/404.html
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
