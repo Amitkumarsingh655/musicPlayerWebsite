@@ -10,6 +10,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 
 export default function App() {
+  const BASE_PATH = '/musicPlayerWebsite';
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -20,14 +21,21 @@ export default function App() {
   }, []);
 
   const navigate = (path) => {
-    window.history.pushState({}, '', path);
-    setCurrentPath(path);
+    // If we're deploying to GH pages, append the base path if not present
+    const fullPath = path === '/' ? BASE_PATH + '/' : BASE_PATH + path;
+    window.history.pushState({}, '', fullPath);
+    setCurrentPath(fullPath);
   };
 
   const renderContent = () => {
-    if (currentPath === '/terms') return <TermsAndConditions />;
-    if (currentPath === '/privacy') return <PrivacyPolicy />;
+    if (currentPath.includes('/terms')) return <TermsAndConditions />;
+    if (currentPath.includes('/privacy')) return <PrivacyPolicy />;
     return <Home />;
+  };
+
+  const isActive = (path) => {
+    if (path === '/') return currentPath === BASE_PATH || currentPath === BASE_PATH + '/';
+    return currentPath.includes(path);
   };
 
   return (
@@ -41,7 +49,7 @@ export default function App() {
           </div>
 
           <div className="nav-menu">
-            <div className={`nav-item ${currentPath === '/' ? 'active' : ''}`} onClick={() => navigate('/')}>
+            <div className={`nav-item ${isActive('/') ? 'active' : ''}`} onClick={() => navigate('/')}>
               <HomeIcon size={20} />
               <span>Home</span>
             </div>
@@ -56,11 +64,11 @@ export default function App() {
           </div>
 
           <div className="nav-menu" style={{ marginTop: 'auto' }}>
-            <div className={`nav-item ${currentPath === '/terms' ? 'active' : ''}`} onClick={() => navigate('/terms')}>
+            <div className={`nav-item ${isActive('/terms') ? 'active' : ''}`} onClick={() => navigate('/terms')}>
               <FileText size={20} />
               <span>Terms</span>
             </div>
-            <div className={`nav-item ${currentPath === '/privacy' ? 'active' : ''}`} onClick={() => navigate('/privacy')}>
+            <div className={`nav-item ${isActive('/privacy') ? 'active' : ''}`} onClick={() => navigate('/privacy')}>
               <Shield size={20} />
               <span>Privacy</span>
             </div>
